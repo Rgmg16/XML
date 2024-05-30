@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder:</heading>
+    <body>Don't forget me this weekend!</body>
+</note>
+
+<!-- Namespaces in XML; They are used to avoid element name conflicts by qualifying names used in XML documents. -->
+<root xmlns:h="http://www.w3.org/TR/html4/" xmlns:f="http://www.w3schools.com/furniture">
+  <h:table>
+    <h:tr>
+      <h:td>Apples</h:td>
+      <h:td>Bananas</h:td>
+    </h:tr>
+  </h:table>
+
+  <f:table>
+    <f:name>African Coffee Table</f:name>
+    <f:width>80</f:width>
+    <f:length>120</f:length>
+  </f:table>
+</root>
+
+<!-- XML validation -->
+<!-- 1. Using Document Type Definition(DTD) -->
+<!DOCTYPE note [
+<!ELEMENT note (to,from,heading,body)>
+<!ELEMENT to (#PCDATA)>
+<!ELEMENT from (#PCDATA)>
+<!ELEMENT heading (#PCDATA)>
+<!ELEMENT body (#PCDATA)>
+]>
+<note>
+    <to>Tove</to>
+    <from>Jani</from>
+    <heading>Reminder</heading>
+    <body>Don't forget me this weekend!</body>
+</note>
+
+<!-- 2. XML Schema -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="to" type="xs:string"/>
+        <xs:element name="from" type="xs:string"/>
+        <xs:element name="heading" type="xs:string"/>
+        <xs:element name="body" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+
